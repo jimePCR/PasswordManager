@@ -17,15 +17,24 @@ namespace PassMan
 
         private void loginbtn_Click(object sender, EventArgs e)
         {
-            Account account = new Account
+            try
             {
-                IdUser = user.Id,
-                Name = this.userValue.Text,
-                Password = EncryptService.Encrypt(this.passValue.Text, user.MasterPass),
-                Note = this.notes.Text
-            };
-            access.InsertAccount(account);
-            this.Close();
+                Account account = new Account
+                {
+                    IdUser = user.Id,
+                    Name = this.userValue.Text,
+                    Password = EncryptService.Encrypt(this.passValue.Text, user.MasterPass),
+                    Note = this.notes.Text
+                };
+                access.InsertAccount(account);
+                this.Close();
+
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message);
+            }
+
         }
 
         private void createUser_Click(object sender, EventArgs e)

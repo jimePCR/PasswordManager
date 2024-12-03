@@ -15,16 +15,22 @@ namespace PassMan
 
         private void login_Click(object sender, EventArgs e)
         {
-            User us = access.ValidateUser(userValue.Text);
-            if (HasherService.Verify(this.passValue.Text, us.Password))
+            try
             {
-                this.Hide();
-                MainView main = new MainView(us);
-                main.ShowDialog();
-                this.Close();
+                User us = access.ValidateUser(userValue.Text);
+                if (HasherService.Verify(this.passValue.Text, us.Password))
+                {
+                    this.Hide();
+                    MainView main = new MainView(us);
+                    main.ShowDialog();
+                    this.Close();
+                }
+                else
+                    MessageBox.Show("Incorrect Password");
+            }catch(Exception ex)
+            {
+                MessageBox.Show(ex.Message);
             }
-            else
-                MessageBox.Show("Contraseña incorrecta");
         }
 
         private void CreateUser_Click(object sender, EventArgs e)

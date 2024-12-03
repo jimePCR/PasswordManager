@@ -14,22 +14,29 @@ namespace PassMan
 
         private void Create_Click(object sender, EventArgs e)
         {
-            if (this.userValue.Text != "" || this.emailValue.Text != "" || this.passValue.Text != "" || this.masterValue.Text != "")
+            try
             {
-                User us = new User
+                if (this.userValue.Text != "" || this.emailValue.Text != "" || this.passValue.Text != "" || this.masterValue.Text != "")
                 {
-                    Name = this.userValue.Text,
-                    Password = HasherService.HashPass2(this.passValue.Text),
-                    Email = this.emailValue.Text,
-                    MasterPass = HasherService.HashPass2(this.masterValue.Text)
-                };
-                access.InsertUser(us);
-                MessageBox.Show("Creación exitosa.");
-                this.Close();
+                    User us = new User
+                    {
+                        Name = this.userValue.Text,
+                        Password = HasherService.HashPass2(this.passValue.Text),
+                        Email = this.emailValue.Text,
+                        MasterPass = HasherService.HashPass2(this.masterValue.Text)
+                    };
+                    access.InsertUser(us);
+                    MessageBox.Show("Success");
+                    this.Close();
+                }
+                else
+                {
+                    MessageBox.Show("Please enter all data");
+                }
             }
-            else
+            catch (Exception ex)
             {
-                MessageBox.Show("Debes llenar todos los datos");
+                MessageBox.Show(ex.Message);
             }
         }
     }

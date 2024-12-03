@@ -22,13 +22,20 @@ namespace PassMan
         }
         public void addAccounts()
         {
-            int index = 1;
-            userMV.Accounts = access.GetAccounts(userMV.Id);
-            this.listAccounts.Rows.Clear();
-            foreach (var account in userMV.Accounts)
+            try
             {
-                this.listAccounts.Rows.Add(index, account.Name, account.Password, account.Note);
-                index++;
+                int index = 1;
+                userMV.Accounts = access.GetAccounts(userMV.Id);
+                this.listAccounts.Rows.Clear();
+                foreach (var account in userMV.Accounts)
+                {
+                    this.listAccounts.Rows.Add(index, account.Name, account.Password, account.Note);
+                    index++;
+                }
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message);
             }
         }
 
@@ -41,25 +48,33 @@ namespace PassMan
 
         private void showPass_Click(object sender, EventArgs e)
         {
-            int index = 1;
-            string input = Interaction.InputBox("Digita tu llave maestra", "Llave maestra", "...");
-            if (HasherService.Verify(input, userMV.MasterPass))
+            try
             {
-                emailService.sendEmail(userMV);
-                input = Interaction.InputBox("Se envio un codigo de verificación a tu correo, digita el código que se te envio", "Codigo Verificación", "...");
-                if(emailService.code == Convert.ToInt32(input))
+                int index = 1;
+                string input = Interaction.InputBox("Please enter your master key", "Master key", "...");
+                if (HasherService.Verify(input, userMV.MasterPass))
                 {
-                    listAccounts.Rows.Clear();
-                    foreach (var account in userMV.Accounts)
+                    emailService.sendEmail(userMV);
+                    input = Interaction.InputBox("We've sent an email to verify your identity. Please enter the verification code.", "Verification code", "...");
+                    if (emailService.code == Convert.ToInt32(input))
                     {
-                        this.listAccounts.Rows.Add(index, account.Name, EncryptService.Decrypt(account.Password, userMV.MasterPass), account.Note);
-                        index++;
+                        listAccounts.Rows.Clear();
+                        foreach (var account in userMV.Accounts)
+                        {
+                            this.listAccounts.Rows.Add(index, account.Name, EncryptService.Decrypt(account.Password, userMV.MasterPass), account.Note);
+                            index++;
+                        }
                     }
-                }else
-                    MessageBox.Show("Codigo incorrecto");
+                    else
+                        MessageBox.Show("Incorrect verificacion code");
+                }
+                else
+                    MessageBox.Show("Incorrect master key");
             }
-            else
-                MessageBox.Show("Llave incorrecta");
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message);
+            }
         }
 
         private void button1_Click(object sender, EventArgs e)

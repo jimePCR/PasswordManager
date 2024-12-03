@@ -91,9 +91,9 @@
             this.label5.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(117)))), ((int)(((byte)(214)))));
             this.label5.Location = new System.Drawing.Point(12, 277);
             this.label5.Name = "label5";
-            this.label5.Size = new System.Drawing.Size(126, 16);
+            this.label5.Size = new System.Drawing.Size(84, 16);
             this.label5.TabIndex = 10;
-            this.label5.Text = "Master Password";
+            this.label5.Text = "Master Key";
             // 
             // Create
             // 
