@@ -73,5 +73,55 @@ namespace PassMan
         {
             StringConnBuider();
         }
+
+        public void DeleteUser()
+        {
+            StringConnBuider();
+        }
+
+        public List<Account> GetAccounts(int id_user)
+        {
+            List<Account> accounts = new List<Account>();
+            StringConnBuider();
+
+            using (SqlConnection _con = new SqlConnection(connectionString))
+            {
+                string queryString = string.Format("SELECT * FROM password_account WHERE user_id = '{0}'", id_user);
+
+                using (SqlCommand _cmd = new SqlCommand(queryString, _con))
+                {
+                    _con.Open();
+                    SqlDataReader reader = _cmd.ExecuteReader();
+                    while (reader.Read())
+                    {
+                        accounts.Add(new Account()
+                        {
+                            Id = reader.GetInt32(0),
+                            IdUser = reader.GetInt32(1),
+                            Name = reader.GetString(2),
+                            Password = reader.GetString(3),
+                            Note = reader.GetString(4)
+                        });
+
+                    }
+                }
+            }
+            return accounts;
+        }
+
+        public bool InsertAccount(Account account)
+        {
+            StringConnBuider();
+            using (SqlConnection _con = new SqlConnection(connectionString))
+            {
+                string queryString = string.Format("INSERT INTO password_account (user_id, name, password, note) VALUES ('{0}', '{1}', '{2}', '{3}')", account.IdUser, account.Name, account.Password, account.Note);
+
+                using (SqlCommand _cmd = new SqlCommand(queryString, _con))
+                {
+                    _con.Open();
+                    return _cmd.ExecuteNonQuery() > 0;
+                }
+            }
+        }
     }
 }

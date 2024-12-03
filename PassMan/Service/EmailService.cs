@@ -10,22 +10,23 @@ namespace PassMan
     {
         private readonly string Email = Environment.GetEnvironmentVariable("email");
         private readonly string Password = Environment.GetEnvironmentVariable("passEmail");
+        public int code = 0;
         
         private BodyBuilder CreateMessage(string userName)
         {
             Random random = new Random();
-            int randomNumber = random.Next(0, 999);
+            code = random.Next(0, 999);
             var builder = new BodyBuilder();
 
             builder.HtmlBody = string.Format(@"<p>Hola {0},<br>
                 <p>Clave temporal de verificación:<br>
                 <p>{1}<br>
                 <p>-- Sir Bigotes<br>
-                ", userName, randomNumber);
+                ", userName, code);
             return builder;
         }
 
-        private bool sendEmail(User user)
+        public bool sendEmail(User user)
         {
             if (user.Email != "")
             {

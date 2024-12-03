@@ -1,6 +1,6 @@
 ﻿namespace PassMan
 {
-    partial class Form1
+    partial class Login
     {
         /// <summary>
         /// Variable del diseñador necesaria.
@@ -32,7 +32,7 @@
             this.panel1 = new System.Windows.Forms.Panel();
             this.userValue = new System.Windows.Forms.TextBox();
             this.createUser = new System.Windows.Forms.Button();
-            this.login = new System.Windows.Forms.Button();
+            this.loginbtn = new System.Windows.Forms.Button();
             this.passValue = new System.Windows.Forms.TextBox();
             this.panel2 = new System.Windows.Forms.Panel();
             this.label2 = new System.Windows.Forms.Label();
@@ -44,7 +44,7 @@
             this.label1.AutoSize = true;
             this.label1.Font = new System.Drawing.Font("Microsoft Sans Serif", 24F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label1.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(117)))), ((int)(((byte)(214)))));
-            this.label1.Location = new System.Drawing.Point(42, 32);
+            this.label1.Location = new System.Drawing.Point(37, 32);
             this.label1.Name = "label1";
             this.label1.Size = new System.Drawing.Size(222, 37);
             this.label1.TabIndex = 0;
@@ -83,18 +83,18 @@
             this.createUser.UseVisualStyleBackColor = false;
             this.createUser.Click += new System.EventHandler(this.CreateUser_Click);
             // 
-            // login
+            // loginbtn
             // 
-            this.login.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(117)))), ((int)(((byte)(214)))));
-            this.login.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.login.ForeColor = System.Drawing.Color.White;
-            this.login.Location = new System.Drawing.Point(49, 318);
-            this.login.Name = "login";
-            this.login.Size = new System.Drawing.Size(175, 23);
-            this.login.TabIndex = 4;
-            this.login.Text = "Iniciar";
-            this.login.UseVisualStyleBackColor = false;
-            this.login.Click += new System.EventHandler(this.login_Click);
+            this.loginbtn.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(117)))), ((int)(((byte)(214)))));
+            this.loginbtn.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.loginbtn.ForeColor = System.Drawing.Color.White;
+            this.loginbtn.Location = new System.Drawing.Point(49, 318);
+            this.loginbtn.Name = "loginbtn";
+            this.loginbtn.Size = new System.Drawing.Size(175, 23);
+            this.loginbtn.TabIndex = 4;
+            this.loginbtn.Text = "Iniciar";
+            this.loginbtn.UseVisualStyleBackColor = false;
+            this.loginbtn.Click += new System.EventHandler(this.login_Click);
             // 
             // passValue
             // 
@@ -136,7 +136,7 @@
             this.label3.TabIndex = 7;
             this.label3.Text = "Contraseña";
             // 
-            // Form1
+            // Login
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
@@ -146,13 +146,13 @@
             this.Controls.Add(this.label2);
             this.Controls.Add(this.panel2);
             this.Controls.Add(this.passValue);
-            this.Controls.Add(this.login);
+            this.Controls.Add(this.loginbtn);
             this.Controls.Add(this.createUser);
             this.Controls.Add(this.userValue);
             this.Controls.Add(this.panel1);
             this.Controls.Add(this.label1);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedToolWindow;
-            this.Name = "Form1";
+            this.Name = "Login";
             this.Text = "Form1";
             this.ResumeLayout(false);
             this.PerformLayout();
@@ -165,7 +165,7 @@
         private System.Windows.Forms.Panel panel1;
         private System.Windows.Forms.TextBox userValue;
         private System.Windows.Forms.Button createUser;
-        private System.Windows.Forms.Button login;
+        private System.Windows.Forms.Button loginbtn;
         private System.Windows.Forms.TextBox passValue;
         private System.Windows.Forms.Panel panel2;
         private System.Windows.Forms.Label label2;

@@ -1,9 +1,5 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Linq;
 using System.Security.Cryptography;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace PassMan
 {
@@ -12,21 +8,6 @@ namespace PassMan
         private const int _saltSize = 16; // 128 bits
         private const int _keySize = 20;
         private const int _iterations = 10000;
-
-        //public static string HashPass(string password)
-        //{
-        //    SHA256 sha256 = SHA256.Create();
-
-        //    byte[] hashData = sha256.ComputeHash(Encoding.Default.GetBytes(password));
-        //    StringBuilder returnValue = new StringBuilder();
-
-        //    foreach (var hash in hashData)
-        //    {
-        //        returnValue.Append(hash.ToString());
-        //    }
-
-        //    return returnValue.ToString();
-        //}
 
         public static string HashPass2(string password)
         {

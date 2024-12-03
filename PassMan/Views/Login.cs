@@ -3,12 +3,12 @@ using System.Windows.Forms;
 
 namespace PassMan
 {
-    public partial class Form1 : Form
+    public partial class Login : Form
     {
 
         private DataAccess access = new DataAccess();
 
-        public Form1()
+        public Login()
         {
             InitializeComponent();
         }
@@ -17,9 +17,14 @@ namespace PassMan
         {
             User us = access.ValidateUser(userValue.Text);
             if (HasherService.Verify(this.passValue.Text, us.Password))
-                MessageBox.Show(us.Id + " " + us.Name + " " + us.Email + " " + us.Password + " " + us.MasterPass);
+            {
+                this.Hide();
+                MainView main = new MainView(us);
+                main.ShowDialog();
+                this.Close();
+            }
             else
-                MessageBox.Show("Gua gua");
+                MessageBox.Show("Contraseña incorrecta");
         }
 
         private void CreateUser_Click(object sender, EventArgs e)

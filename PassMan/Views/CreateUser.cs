@@ -29,7 +29,7 @@ namespace PassMan
             }
             else
             {
-                MessageBox.Show("Debes poner llenar todos los datos");
+                MessageBox.Show("Debes llenar todos los datos");
             }
         }
     }
