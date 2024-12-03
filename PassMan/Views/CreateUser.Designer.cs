@@ -45,11 +45,11 @@
             this.label1.AutoSize = true;
             this.label1.Font = new System.Drawing.Font("Microsoft Sans Serif", 24F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label1.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(117)))), ((int)(((byte)(214)))));
-            this.label1.Location = new System.Drawing.Point(65, 33);
+            this.label1.Location = new System.Drawing.Point(68, 34);
             this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(143, 37);
+            this.label1.Size = new System.Drawing.Size(142, 37);
             this.label1.TabIndex = 0;
-            this.label1.Text = "Registro";
+            this.label1.Text = "Register";
             // 
             // label2
             // 
@@ -58,9 +58,9 @@
             this.label2.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(117)))), ((int)(((byte)(214)))));
             this.label2.Location = new System.Drawing.Point(12, 104);
             this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(61, 16);
+            this.label2.Size = new System.Drawing.Size(40, 16);
             this.label2.TabIndex = 7;
-            this.label2.Text = "Usuario";
+            this.label2.Text = "User";
             // 
             // label3
             // 
@@ -80,9 +80,9 @@
             this.label4.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(117)))), ((int)(((byte)(214)))));
             this.label4.Location = new System.Drawing.Point(12, 219);
             this.label4.Name = "label4";
-            this.label4.Size = new System.Drawing.Size(86, 16);
+            this.label4.Size = new System.Drawing.Size(75, 16);
             this.label4.TabIndex = 9;
-            this.label4.Text = "Contraseña";
+            this.label4.Text = "Password";
             // 
             // label5
             // 
@@ -91,9 +91,9 @@
             this.label5.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(117)))), ((int)(((byte)(214)))));
             this.label5.Location = new System.Drawing.Point(12, 277);
             this.label5.Name = "label5";
-            this.label5.Size = new System.Drawing.Size(146, 16);
+            this.label5.Size = new System.Drawing.Size(126, 16);
             this.label5.TabIndex = 10;
-            this.label5.Text = "Contraseña Maestra";
+            this.label5.Text = "Master Password";
             // 
             // Create
             // 
@@ -104,7 +104,7 @@
             this.Create.Name = "Create";
             this.Create.Size = new System.Drawing.Size(175, 23);
             this.Create.TabIndex = 11;
-            this.Create.Text = "Crear";
+            this.Create.Text = "Create";
             this.Create.UseVisualStyleBackColor = false;
             this.Create.Click += new System.EventHandler(this.Create_Click);
             // 

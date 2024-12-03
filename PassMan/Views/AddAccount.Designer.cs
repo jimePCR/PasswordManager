@@ -37,9 +37,9 @@
             this.panel2 = new System.Windows.Forms.Panel();
             this.label4 = new System.Windows.Forms.Label();
             this.panel3 = new System.Windows.Forms.Panel();
-            this.loginbtn = new System.Windows.Forms.Button();
+            this.savebtn = new System.Windows.Forms.Button();
             this.notes = new System.Windows.Forms.RichTextBox();
-            this.createUser = new System.Windows.Forms.Button();
+            this.cancelAcc = new System.Windows.Forms.Button();
             this.SuspendLayout();
             // 
             // label1
@@ -49,9 +49,9 @@
             this.label1.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(117)))), ((int)(((byte)(214)))));
             this.label1.Location = new System.Drawing.Point(12, 18);
             this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(258, 37);
+            this.label1.Size = new System.Drawing.Size(212, 37);
             this.label1.TabIndex = 1;
-            this.label1.Text = "Agregar Cuenta";
+            this.label1.Text = "Add Account";
             // 
             // label2
             // 
@@ -60,9 +60,9 @@
             this.label2.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(117)))), ((int)(((byte)(214)))));
             this.label2.Location = new System.Drawing.Point(16, 87);
             this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(61, 16);
+            this.label2.Size = new System.Drawing.Size(40, 16);
             this.label2.TabIndex = 9;
-            this.label2.Text = "Usuario";
+            this.label2.Text = "User";
             // 
             // userValue
             // 
@@ -91,9 +91,9 @@
             this.label3.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(117)))), ((int)(((byte)(214)))));
             this.label3.Location = new System.Drawing.Point(16, 158);
             this.label3.Name = "label3";
-            this.label3.Size = new System.Drawing.Size(86, 16);
+            this.label3.Size = new System.Drawing.Size(75, 16);
             this.label3.TabIndex = 12;
-            this.label3.Text = "Contraseña";
+            this.label3.Text = "Password";
             // 
             // passValue
             // 
@@ -125,7 +125,7 @@
             this.label4.Name = "label4";
             this.label4.Size = new System.Drawing.Size(48, 16);
             this.label4.TabIndex = 15;
-            this.label4.Text = "Notas";
+            this.label4.Text = "Notes";
             // 
             // panel3
             // 
@@ -135,18 +135,18 @@
             this.panel3.Size = new System.Drawing.Size(241, 2);
             this.panel3.TabIndex = 13;
             // 
-            // loginbtn
+            // savebtn
             // 
-            this.loginbtn.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(117)))), ((int)(((byte)(214)))));
-            this.loginbtn.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.loginbtn.ForeColor = System.Drawing.Color.White;
-            this.loginbtn.Location = new System.Drawing.Point(109, 379);
-            this.loginbtn.Name = "loginbtn";
-            this.loginbtn.Size = new System.Drawing.Size(151, 23);
-            this.loginbtn.TabIndex = 17;
-            this.loginbtn.Text = "Aceptar";
-            this.loginbtn.UseVisualStyleBackColor = false;
-            this.loginbtn.Click += new System.EventHandler(this.loginbtn_Click);
+            this.savebtn.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(117)))), ((int)(((byte)(214)))));
+            this.savebtn.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.savebtn.ForeColor = System.Drawing.Color.White;
+            this.savebtn.Location = new System.Drawing.Point(109, 379);
+            this.savebtn.Name = "savebtn";
+            this.savebtn.Size = new System.Drawing.Size(151, 23);
+            this.savebtn.TabIndex = 17;
+            this.savebtn.Text = "Save";
+            this.savebtn.UseVisualStyleBackColor = false;
+            this.savebtn.Click += new System.EventHandler(this.loginbtn_Click);
             // 
             // notes
             // 
@@ -156,18 +156,18 @@
             this.notes.TabIndex = 18;
             this.notes.Text = "";
             // 
-            // createUser
+            // cancelAcc
             // 
-            this.createUser.BackColor = System.Drawing.Color.Transparent;
-            this.createUser.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.createUser.ForeColor = System.Drawing.Color.Black;
-            this.createUser.Location = new System.Drawing.Point(19, 379);
-            this.createUser.Name = "createUser";
-            this.createUser.Size = new System.Drawing.Size(83, 23);
-            this.createUser.TabIndex = 16;
-            this.createUser.Text = "Cancelar";
-            this.createUser.UseVisualStyleBackColor = false;
-            this.createUser.Click += new System.EventHandler(this.createUser_Click);
+            this.cancelAcc.BackColor = System.Drawing.Color.Transparent;
+            this.cancelAcc.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.cancelAcc.ForeColor = System.Drawing.Color.Black;
+            this.cancelAcc.Location = new System.Drawing.Point(19, 379);
+            this.cancelAcc.Name = "cancelAcc";
+            this.cancelAcc.Size = new System.Drawing.Size(83, 23);
+            this.cancelAcc.TabIndex = 16;
+            this.cancelAcc.Text = "Cancel";
+            this.cancelAcc.UseVisualStyleBackColor = false;
+            this.cancelAcc.Click += new System.EventHandler(this.createUser_Click);
             // 
             // AddAccount
             // 
@@ -176,8 +176,8 @@
             this.BackColor = System.Drawing.Color.White;
             this.ClientSize = new System.Drawing.Size(296, 441);
             this.Controls.Add(this.notes);
-            this.Controls.Add(this.loginbtn);
-            this.Controls.Add(this.createUser);
+            this.Controls.Add(this.savebtn);
+            this.Controls.Add(this.cancelAcc);
             this.Controls.Add(this.label4);
             this.Controls.Add(this.panel3);
             this.Controls.Add(this.label3);
@@ -206,8 +206,8 @@
         private System.Windows.Forms.Panel panel2;
         private System.Windows.Forms.Label label4;
         private System.Windows.Forms.Panel panel3;
-        private System.Windows.Forms.Button loginbtn;
+        private System.Windows.Forms.Button savebtn;
         private System.Windows.Forms.RichTextBox notes;
-        private System.Windows.Forms.Button createUser;
+        private System.Windows.Forms.Button cancelAcc;
     }
 }

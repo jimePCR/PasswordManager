@@ -41,6 +41,7 @@ namespace PassMan
 
         private void showPass_Click(object sender, EventArgs e)
         {
+            int index = 1;
             string input = Interaction.InputBox("Digita tu llave maestra", "Llave maestra", "...");
             if (HasherService.Verify(input, userMV.MasterPass))
             {
@@ -51,13 +52,19 @@ namespace PassMan
                     listAccounts.Rows.Clear();
                     foreach (var account in userMV.Accounts)
                     {
-                        this.listAccounts.Rows.Add(account.Id, account.Name, EncryptService.Decrypt(account.Password, userMV.MasterPass), account.Note);
+                        this.listAccounts.Rows.Add(index, account.Name, EncryptService.Decrypt(account.Password, userMV.MasterPass), account.Note);
+                        index++;
                     }
                 }else
                     MessageBox.Show("Codigo incorrecto");
             }
             else
                 MessageBox.Show("Llave incorrecta");
+        }
+
+        private void button1_Click(object sender, EventArgs e)
+        {
+            this.Close();
         }
     }
 }
