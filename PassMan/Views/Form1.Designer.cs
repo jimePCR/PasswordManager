@@ -30,7 +30,7 @@
         {
             this.label1 = new System.Windows.Forms.Label();
             this.panel1 = new System.Windows.Forms.Panel();
-            this.emailValue = new System.Windows.Forms.TextBox();
+            this.userValue = new System.Windows.Forms.TextBox();
             this.createUser = new System.Windows.Forms.Button();
             this.login = new System.Windows.Forms.Button();
             this.passValue = new System.Windows.Forms.TextBox();
@@ -58,17 +58,17 @@
             this.panel1.Size = new System.Drawing.Size(241, 2);
             this.panel1.TabIndex = 1;
             // 
-            // emailValue
+            // userValue
             // 
-            this.emailValue.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.emailValue.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.emailValue.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(117)))), ((int)(((byte)(214)))));
-            this.emailValue.Location = new System.Drawing.Point(23, 175);
-            this.emailValue.Multiline = true;
-            this.emailValue.Name = "emailValue";
-            this.emailValue.ScrollBars = System.Windows.Forms.ScrollBars.Horizontal;
-            this.emailValue.Size = new System.Drawing.Size(241, 24);
-            this.emailValue.TabIndex = 2;
+            this.userValue.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.userValue.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.userValue.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(117)))), ((int)(((byte)(214)))));
+            this.userValue.Location = new System.Drawing.Point(23, 175);
+            this.userValue.Multiline = true;
+            this.userValue.Name = "userValue";
+            this.userValue.ScrollBars = System.Windows.Forms.ScrollBars.Horizontal;
+            this.userValue.Size = new System.Drawing.Size(241, 24);
+            this.userValue.TabIndex = 2;
             // 
             // createUser
             // 
@@ -81,7 +81,7 @@
             this.createUser.TabIndex = 3;
             this.createUser.Text = "Crear";
             this.createUser.UseVisualStyleBackColor = false;
-            this.createUser.Click += new System.EventHandler(this.crearUser_Click);
+            this.createUser.Click += new System.EventHandler(this.CreateUser_Click);
             // 
             // login
             // 
@@ -94,7 +94,7 @@
             this.login.TabIndex = 4;
             this.login.Text = "Iniciar";
             this.login.UseVisualStyleBackColor = false;
-            this.login.Click += new System.EventHandler(this.enviarEmail_Click);
+            this.login.Click += new System.EventHandler(this.login_Click);
             // 
             // passValue
             // 
@@ -148,7 +148,7 @@
             this.Controls.Add(this.passValue);
             this.Controls.Add(this.login);
             this.Controls.Add(this.createUser);
-            this.Controls.Add(this.emailValue);
+            this.Controls.Add(this.userValue);
             this.Controls.Add(this.panel1);
             this.Controls.Add(this.label1);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedToolWindow;
@@ -163,7 +163,7 @@
 
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.Panel panel1;
-        private System.Windows.Forms.TextBox emailValue;
+        private System.Windows.Forms.TextBox userValue;
         private System.Windows.Forms.Button createUser;
         private System.Windows.Forms.Button login;
         private System.Windows.Forms.TextBox passValue;

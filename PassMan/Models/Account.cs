@@ -6,10 +6,11 @@ using System.Threading.Tasks;
 
 namespace PassMan
 {
-    public class User
+    public class Account
     {
-        public int Id { get; set; }
+        public int Id {  get; set; }
         public string Name { get; set; }
-        public string Email { get; set; }
+        public string Password { get; set; }
+        public string Note { get; set; }
     }
 }
