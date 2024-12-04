@@ -7,19 +7,19 @@ namespace PassMan
     public class DataAccess
     {
         private string connectionString;
-        private readonly string _DataSource = Environment.GetEnvironmentVariable("datasource");
-        private readonly string _UserId = Environment.GetEnvironmentVariable("userDB");
-        private readonly string _Password = Environment.GetEnvironmentVariable("passDB");
-        private readonly string _InitialCatalog = Environment.GetEnvironmentVariable("database");
+        private readonly string _dataSource = Environment.GetEnvironmentVariable("datasource");
+        private readonly string _userId = Environment.GetEnvironmentVariable("userDB");
+        private readonly string _password = Environment.GetEnvironmentVariable("passDB");
+        private readonly string _initialCatalog = Environment.GetEnvironmentVariable("database");
 
         private void StringConnBuider()
         {
             var builder = new SqlConnectionStringBuilder
             {
-                DataSource = this._DataSource,
-                UserID = this._UserId,
-                Password = this._Password,
-                InitialCatalog = this._InitialCatalog
+                DataSource = this._dataSource,
+                UserID = this._userId,
+                Password = this._password,
+                InitialCatalog = this._initialCatalog
             };
             connectionString = builder.ConnectionString;
         }

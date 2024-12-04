@@ -6,7 +6,8 @@ namespace PassMan
     public partial class Login : Form
     {
 
-        private DataAccess access = new DataAccess();
+        private readonly DataAccess access = new DataAccess();
+        private EmailService emailService = new EmailService();
 
         public Login()
         {
@@ -17,16 +18,21 @@ namespace PassMan
         {
             try
             {
-                User us = access.ValidateUser(userValue.Text);
-                if (HasherService.Verify(this.passValue.Text, us.Password))
+                if (this.userValue.Text != "" && this.passValue.Text != "")
                 {
-                    this.Hide();
-                    MainView main = new MainView(us);
-                    main.ShowDialog();
-                    this.Close();
+                    User us = access.ValidateUser(userValue.Text);
+                    if (HasherService.Verify(this.passValue.Text, us.Password))
+                    {
+                        this.Hide();
+                        MainView main = new MainView(us);
+                        main.ShowDialog();
+                        this.Close();
+                    }
+                    else
+                        MessageBox.Show("Incorrect Password");
                 }
                 else
-                    MessageBox.Show("Incorrect Password");
+                    MessageBox.Show("Please enter all data");
             }catch(Exception ex)
             {
                 MessageBox.Show(ex.Message);

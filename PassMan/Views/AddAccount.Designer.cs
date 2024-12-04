@@ -146,7 +146,7 @@
             this.savebtn.TabIndex = 17;
             this.savebtn.Text = "Save";
             this.savebtn.UseVisualStyleBackColor = false;
-            this.savebtn.Click += new System.EventHandler(this.loginbtn_Click);
+            this.savebtn.Click += new System.EventHandler(this.savebtn_Click);
             // 
             // notes
             // 
@@ -167,7 +167,7 @@
             this.cancelAcc.TabIndex = 16;
             this.cancelAcc.Text = "Cancel";
             this.cancelAcc.UseVisualStyleBackColor = false;
-            this.cancelAcc.Click += new System.EventHandler(this.createUser_Click);
+            this.cancelAcc.Click += new System.EventHandler(this.cancelAcc_Click);
             // 
             // AddAccount
             // 

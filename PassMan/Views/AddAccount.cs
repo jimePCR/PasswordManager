@@ -5,9 +5,8 @@ namespace PassMan
 {
     public partial class AddAccount : Form
     {
-        private DataAccess access = new DataAccess();
-        private User user;
-        private MainView main;
+        private readonly DataAccess access = new DataAccess();
+        private readonly User user;
 
         public AddAccount(User user)
         {
@@ -15,20 +14,24 @@ namespace PassMan
             this.user = user;
         }
 
-        private void loginbtn_Click(object sender, EventArgs e)
+        private void savebtn_Click(object sender, EventArgs e)
         {
             try
             {
-                Account account = new Account
+                if (this.userValue.Text != "" && passValue.Text != "")
                 {
-                    IdUser = user.Id,
-                    Name = this.userValue.Text,
-                    Password = EncryptService.Encrypt(this.passValue.Text, user.MasterPass),
-                    Note = this.notes.Text
-                };
-                access.InsertAccount(account);
-                this.Close();
-
+                    Account account = new Account
+                    {
+                        IdUser = user.Id,
+                        Name = this.userValue.Text,
+                        Password = EncryptService.Encrypt(this.passValue.Text, user.MasterPass),
+                        Note = this.notes.Text
+                    };
+                    access.InsertAccount(account);
+                    this.Close();
+                }
+                else
+                    MessageBox.Show("Please enter all data");
             }
             catch (Exception ex)
             {
@@ -37,7 +40,7 @@ namespace PassMan
 
         }
 
-        private void createUser_Click(object sender, EventArgs e)
+        private void cancelAcc_Click(object sender, EventArgs e)
         {
             this.Close();
         }

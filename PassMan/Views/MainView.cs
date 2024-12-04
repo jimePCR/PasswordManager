@@ -24,13 +24,11 @@ namespace PassMan
         {
             try
             {
-                int index = 1;
                 userMV.Accounts = access.GetAccounts(userMV.Id);
                 this.listAccounts.Rows.Clear();
                 foreach (var account in userMV.Accounts)
                 {
-                    this.listAccounts.Rows.Add(index, account.Name, account.Password, account.Note);
-                    index++;
+                    this.listAccounts.Rows.Add(account.Name, account.Password, account.Note);
                 }
             }
             catch (Exception ex)
@@ -50,7 +48,6 @@ namespace PassMan
         {
             try
             {
-                int index = 1;
                 string input = Interaction.InputBox("Please enter your master key", "Master key", "...");
                 if (HasherService.Verify(input, userMV.MasterPass))
                 {
@@ -61,8 +58,7 @@ namespace PassMan
                         listAccounts.Rows.Clear();
                         foreach (var account in userMV.Accounts)
                         {
-                            this.listAccounts.Rows.Add(index, account.Name, EncryptService.Decrypt(account.Password, userMV.MasterPass), account.Note);
-                            index++;
+                            this.listAccounts.Rows.Add(account.Name, EncryptService.Decrypt(account.Password, userMV.MasterPass), account.Note);
                         }
                     }
                     else
@@ -75,11 +71,6 @@ namespace PassMan
             {
                 MessageBox.Show(ex.Message);
             }
-        }
-
-        private void button1_Click(object sender, EventArgs e)
-        {
-            this.Close();
         }
     }
 }

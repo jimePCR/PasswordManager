@@ -3,14 +3,21 @@ using System;
 using System.Windows.Forms;
 using MailKit.Net.Smtp;
 using MailKit.Security;
+using FluentValidation;
+using FluentValidation.Validators;
 
 namespace PassMan
 {
-    public class EmailService
+    public class EmailService : AbstractValidator<string>
     {
         private readonly string Email = Environment.GetEnvironmentVariable("email");
         private readonly string Password = Environment.GetEnvironmentVariable("passEmail");
         public int code = 0;
+
+        public EmailService()
+        {
+            RuleFor(email => email).EmailAddress();
+        }
 
         private BodyBuilder CreateMessage(string userName)
         {
@@ -32,22 +39,28 @@ namespace PassMan
             {
                 if (user.Email != "")
                 {
-                    var message = new MimeMessage();
-                    message.From.Add(new MailboxAddress("Bigo", this.Email));
-                    message.To.Add(new MailboxAddress(user.Name, user.Email));
-                    message.Subject = "Verification Code";
-                    var builder = CreateMessage(user.Name);
-
-                    message.Body = builder.ToMessageBody();
-
-                    using (var client = new SmtpClient())
+                    var result = this.Validate(user.Email);
+                    if (result.IsValid)
                     {
-                        client.Connect("smtp.gmail.com", 587, SecureSocketOptions.StartTls);
-                        client.Authenticate(Email, Password);
-                        client.Send(message);
-                        client.Disconnect(true);
+                        var message = new MimeMessage();
+                        message.From.Add(new MailboxAddress("Bigo", this.Email));
+                        message.To.Add(new MailboxAddress(user.Name, user.Email));
+                        message.Subject = "Verification Code";
+                        var builder = CreateMessage(user.Name);
+
+                        message.Body = builder.ToMessageBody();
+
+                        using (var client = new SmtpClient())
+                        {
+                            client.Connect("smtp.gmail.com", 587, SecureSocketOptions.StartTls);
+                            client.Authenticate(Email, Password);
+                            client.Send(message);
+                            client.Disconnect(true);
+                        }
+                        return true;
                     }
-                    return true;
+                    else
+                        MessageBox.Show("Email is invalid");
                 }
                 else
                     MessageBox.Show("Wrong email");
