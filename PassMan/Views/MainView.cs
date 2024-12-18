@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Windows.Forms;
 using Microsoft.VisualBasic;
+using PassMan.Views;
 
 namespace PassMan
 {
@@ -93,7 +94,11 @@ namespace PassMan
                         if (HasherService.Verify(input, userMV.MasterPass))
                         {
                             name = this.listAccounts[0, e.RowIndex].Value.ToString();
-                            int id = userMV.Accounts.Find(x => x.Name.Equals(name)).Id;
+                            Account account = userMV.Accounts.Find(x => x.Name.Equals(name));
+                            account.Password = EncryptService.Decrypt(account.Password, userMV.MasterPass);
+                            EditAccount editAcc = new EditAccount(account, userMV.MasterPass);
+                            editAcc.ShowDialog();
+                            addAccounts();
                         }
                         else
                             MessageBox.Show("Incorrect master key");

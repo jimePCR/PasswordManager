@@ -66,7 +66,7 @@ namespace PassMan
             return user1;
         }
 
-        public bool updateUser(Account account)
+        public bool updateAccount(Account account)
         {
             StringConnBuider();
             using (SqlConnection _con = new SqlConnection(connectionString))
