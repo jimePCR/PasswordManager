@@ -18,6 +18,7 @@ namespace PassMan
 
         private void Main_Load(object sender, EventArgs e)
         {
+            
             addAccounts();
         }
         public void addAccounts()
@@ -29,6 +30,7 @@ namespace PassMan
                 foreach (var account in userMV.Accounts)
                 {
                     this.listAccounts.Rows.Add(account.Name, account.Password, account.Note);
+                    
                 }
             }
             catch (Exception ex)
@@ -52,17 +54,22 @@ namespace PassMan
                 if (HasherService.Verify(input, userMV.MasterPass))
                 {
                     emailService.sendEmail(userMV);
+                    var time = DateTime.Now;
+                    var minutes = time.AddMinutes(5);
                     input = Interaction.InputBox("We've sent an email to verify your identity. Please enter the verification code.", "Verification code", "...");
-                    if (emailService.code == Convert.ToInt32(input))
+                    if (DateTime.Now < minutes)
                     {
-                        listAccounts.Rows.Clear();
-                        foreach (var account in userMV.Accounts)
+                        if (emailService.code == Convert.ToInt32(input))
                         {
-                            this.listAccounts.Rows.Add(account.Name, EncryptService.Decrypt(account.Password, userMV.MasterPass), account.Note);
+                            listAccounts.Rows.Clear();
+                            foreach (var account in userMV.Accounts)
+                            {
+                                this.listAccounts.Rows.Add(account.Name, EncryptService.Decrypt(account.Password, userMV.MasterPass), account.Note);
+                            }
                         }
+                        else
+                            MessageBox.Show("Incorrect verificacion code");
                     }
-                    else
-                        MessageBox.Show("Incorrect verificacion code");
                 }
                 else
                     MessageBox.Show("Incorrect master key");
@@ -71,6 +78,24 @@ namespace PassMan
             {
                 MessageBox.Show(ex.Message);
             }
+        }
+
+        private void listAccounts_CellContentClick(object sender, DataGridViewCellEventArgs e)
+        {
+            if (e.RowIndex >= 0)
+            {
+                if(e.ColumnIndex == 3)
+                {
+                    int id = userMV.Accounts[e.RowIndex].Id;
+                    string name = userMV.Accounts[e.RowIndex].Name;
+                    MessageBox.Show("Holi " + e.RowIndex.ToString() + id + name);
+                }
+                else
+                {
+                    MessageBox.Show("Popis");
+                }
+            }
+
         }
     }
 }

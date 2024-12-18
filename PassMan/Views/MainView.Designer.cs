@@ -28,6 +28,8 @@
         /// </summary>
         private void InitializeComponent()
         {
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle2 = new System.Windows.Forms.DataGridViewCellStyle();
             this.listAccounts = new System.Windows.Forms.DataGridView();
             this.panel1 = new System.Windows.Forms.Panel();
             this.label1 = new System.Windows.Forms.Label();
@@ -36,12 +38,15 @@
             this.NameUser = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.Pass = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.Note = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Edit = new System.Windows.Forms.DataGridViewButtonColumn();
+            this.Delete = new System.Windows.Forms.DataGridViewButtonColumn();
             ((System.ComponentModel.ISupportInitialize)(this.listAccounts)).BeginInit();
             this.panel1.SuspendLayout();
             this.SuspendLayout();
             // 
             // listAccounts
             // 
+            this.listAccounts.AllowUserToAddRows = false;
             this.listAccounts.AllowUserToOrderColumns = true;
             this.listAccounts.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
             this.listAccounts.BackgroundColor = System.Drawing.SystemColors.Menu;
@@ -49,12 +54,15 @@
             this.listAccounts.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
             this.NameUser,
             this.Pass,
-            this.Note});
+            this.Note,
+            this.Edit,
+            this.Delete});
             this.listAccounts.Location = new System.Drawing.Point(12, 144);
             this.listAccounts.Name = "listAccounts";
             this.listAccounts.RowHeadersBorderStyle = System.Windows.Forms.DataGridViewHeaderBorderStyle.None;
             this.listAccounts.Size = new System.Drawing.Size(994, 324);
             this.listAccounts.TabIndex = 1;
+            this.listAccounts.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.listAccounts_CellContentClick);
             // 
             // panel1
             // 
@@ -98,18 +106,46 @@
             // 
             // NameUser
             // 
+            this.NameUser.FillWeight = 146.0974F;
             this.NameUser.HeaderText = "Name";
             this.NameUser.Name = "NameUser";
             // 
             // Pass
             // 
+            this.Pass.FillWeight = 146.0974F;
             this.Pass.HeaderText = "Password";
             this.Pass.Name = "Pass";
             // 
             // Note
             // 
+            this.Note.FillWeight = 146.0974F;
             this.Note.HeaderText = "Note";
             this.Note.Name = "Note";
+            // 
+            // Edit
+            // 
+            this.Edit.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.DisplayedCells;
+            dataGridViewCellStyle1.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
+            dataGridViewCellStyle1.Format = "Edit";
+            this.Edit.DefaultCellStyle = dataGridViewCellStyle1;
+            this.Edit.FillWeight = 31.25079F;
+            this.Edit.HeaderText = "";
+            this.Edit.Name = "Edit";
+            this.Edit.ReadOnly = true;
+            this.Edit.Text = "Edit";
+            this.Edit.UseColumnTextForButtonValue = true;
+            this.Edit.Width = 5;
+            // 
+            // Delete
+            // 
+            dataGridViewCellStyle2.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
+            dataGridViewCellStyle2.Format = "Delete";
+            this.Delete.DefaultCellStyle = dataGridViewCellStyle2;
+            this.Delete.FillWeight = 30.45685F;
+            this.Delete.HeaderText = "";
+            this.Delete.Name = "Delete";
+            this.Delete.Text = "Delete";
+            this.Delete.UseColumnTextForButtonValue = true;
             // 
             // MainView
             // 
@@ -141,5 +177,7 @@
         private System.Windows.Forms.DataGridViewTextBoxColumn NameUser;
         private System.Windows.Forms.DataGridViewTextBoxColumn Pass;
         private System.Windows.Forms.DataGridViewTextBoxColumn Note;
+        private System.Windows.Forms.DataGridViewButtonColumn Edit;
+        private System.Windows.Forms.DataGridViewButtonColumn Delete;
     }
 }

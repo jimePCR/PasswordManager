@@ -4,7 +4,6 @@ using System.Windows.Forms;
 using MailKit.Net.Smtp;
 using MailKit.Security;
 using FluentValidation;
-using FluentValidation.Validators;
 
 namespace PassMan
 {
@@ -28,7 +27,7 @@ namespace PassMan
             builder.HtmlBody = string.Format(@"<p>Hello {0},<br>
                 <p>Your verification code is:<br>
                 <p>{1}<br>
-                <p>-- Sir Bigotes<br>
+                <p>-- XOXO<br>
                 ", userName, code);
             return builder;
         }
