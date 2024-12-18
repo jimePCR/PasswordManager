@@ -31,15 +31,15 @@
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle2 = new System.Windows.Forms.DataGridViewCellStyle();
             this.listAccounts = new System.Windows.Forms.DataGridView();
-            this.panel1 = new System.Windows.Forms.Panel();
-            this.label1 = new System.Windows.Forms.Label();
-            this.addAccount = new System.Windows.Forms.Button();
-            this.showPass = new System.Windows.Forms.Button();
             this.NameUser = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.Pass = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.Note = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.Edit = new System.Windows.Forms.DataGridViewButtonColumn();
             this.Delete = new System.Windows.Forms.DataGridViewButtonColumn();
+            this.panel1 = new System.Windows.Forms.Panel();
+            this.label1 = new System.Windows.Forms.Label();
+            this.addAccount = new System.Windows.Forms.Button();
+            this.showPass = new System.Windows.Forms.Button();
             ((System.ComponentModel.ISupportInitialize)(this.listAccounts)).BeginInit();
             this.panel1.SuspendLayout();
             this.SuspendLayout();
@@ -59,10 +59,58 @@
             this.Delete});
             this.listAccounts.Location = new System.Drawing.Point(12, 144);
             this.listAccounts.Name = "listAccounts";
+            this.listAccounts.ReadOnly = true;
             this.listAccounts.RowHeadersBorderStyle = System.Windows.Forms.DataGridViewHeaderBorderStyle.None;
             this.listAccounts.Size = new System.Drawing.Size(994, 324);
             this.listAccounts.TabIndex = 1;
             this.listAccounts.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.listAccounts_CellContentClick);
+            // 
+            // NameUser
+            // 
+            this.NameUser.FillWeight = 146.0974F;
+            this.NameUser.HeaderText = "Name";
+            this.NameUser.Name = "NameUser";
+            this.NameUser.ReadOnly = true;
+            // 
+            // Pass
+            // 
+            this.Pass.FillWeight = 146.0974F;
+            this.Pass.HeaderText = "Password";
+            this.Pass.Name = "Pass";
+            this.Pass.ReadOnly = true;
+            // 
+            // Note
+            // 
+            this.Note.FillWeight = 146.0974F;
+            this.Note.HeaderText = "Note";
+            this.Note.Name = "Note";
+            this.Note.ReadOnly = true;
+            // 
+            // Edit
+            // 
+            this.Edit.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.DisplayedCells;
+            dataGridViewCellStyle1.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
+            dataGridViewCellStyle1.Format = "Edit";
+            this.Edit.DefaultCellStyle = dataGridViewCellStyle1;
+            this.Edit.FillWeight = 31.25079F;
+            this.Edit.HeaderText = "";
+            this.Edit.Name = "Edit";
+            this.Edit.ReadOnly = true;
+            this.Edit.Text = "Edit";
+            this.Edit.UseColumnTextForButtonValue = true;
+            this.Edit.Width = 5;
+            // 
+            // Delete
+            // 
+            dataGridViewCellStyle2.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
+            dataGridViewCellStyle2.Format = "Delete";
+            this.Delete.DefaultCellStyle = dataGridViewCellStyle2;
+            this.Delete.FillWeight = 30.45685F;
+            this.Delete.HeaderText = "";
+            this.Delete.Name = "Delete";
+            this.Delete.ReadOnly = true;
+            this.Delete.Text = "Delete";
+            this.Delete.UseColumnTextForButtonValue = true;
             // 
             // panel1
             // 
@@ -103,49 +151,6 @@
             this.showPass.Text = "Show Passwords";
             this.showPass.UseVisualStyleBackColor = true;
             this.showPass.Click += new System.EventHandler(this.showPass_Click);
-            // 
-            // NameUser
-            // 
-            this.NameUser.FillWeight = 146.0974F;
-            this.NameUser.HeaderText = "Name";
-            this.NameUser.Name = "NameUser";
-            // 
-            // Pass
-            // 
-            this.Pass.FillWeight = 146.0974F;
-            this.Pass.HeaderText = "Password";
-            this.Pass.Name = "Pass";
-            // 
-            // Note
-            // 
-            this.Note.FillWeight = 146.0974F;
-            this.Note.HeaderText = "Note";
-            this.Note.Name = "Note";
-            // 
-            // Edit
-            // 
-            this.Edit.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.DisplayedCells;
-            dataGridViewCellStyle1.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
-            dataGridViewCellStyle1.Format = "Edit";
-            this.Edit.DefaultCellStyle = dataGridViewCellStyle1;
-            this.Edit.FillWeight = 31.25079F;
-            this.Edit.HeaderText = "";
-            this.Edit.Name = "Edit";
-            this.Edit.ReadOnly = true;
-            this.Edit.Text = "Edit";
-            this.Edit.UseColumnTextForButtonValue = true;
-            this.Edit.Width = 5;
-            // 
-            // Delete
-            // 
-            dataGridViewCellStyle2.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
-            dataGridViewCellStyle2.Format = "Delete";
-            this.Delete.DefaultCellStyle = dataGridViewCellStyle2;
-            this.Delete.FillWeight = 30.45685F;
-            this.Delete.HeaderText = "";
-            this.Delete.Name = "Delete";
-            this.Delete.Text = "Delete";
-            this.Delete.UseColumnTextForButtonValue = true;
             // 
             // MainView
             // 

@@ -18,9 +18,9 @@ namespace PassMan
 
         private void Main_Load(object sender, EventArgs e)
         {
-            
             addAccounts();
         }
+
         public void addAccounts()
         {
             try
@@ -30,7 +30,7 @@ namespace PassMan
                 foreach (var account in userMV.Accounts)
                 {
                     this.listAccounts.Rows.Add(account.Name, account.Password, account.Note);
-                    
+
                 }
             }
             catch (Exception ex)
@@ -82,20 +82,37 @@ namespace PassMan
 
         private void listAccounts_CellContentClick(object sender, DataGridViewCellEventArgs e)
         {
-            if (e.RowIndex >= 0)
+            string name = "";
+            try
             {
-                if(e.ColumnIndex == 3)
+                if (e.RowIndex >= 0)
                 {
-                    int id = userMV.Accounts[e.RowIndex].Id;
-                    string name = userMV.Accounts[e.RowIndex].Name;
-                    MessageBox.Show("Holi " + e.RowIndex.ToString() + id + name);
-                }
-                else
-                {
-                    MessageBox.Show("Popis");
+                    if (e.ColumnIndex == 3)
+                    {
+                        string input = Interaction.InputBox("Please enter your master key", "Master key", "...");
+                        if (HasherService.Verify(input, userMV.MasterPass))
+                        {
+                            name = this.listAccounts[0, e.RowIndex].Value.ToString();
+                            int id = userMV.Accounts.Find(x => x.Name.Equals(name)).Id;
+                        }
+                        else
+                            MessageBox.Show("Incorrect master key");
+                    }
+                    else if (e.ColumnIndex == 4)
+                    {
+                        name = this.listAccounts[0, e.RowIndex].Value.ToString();
+                        int id = userMV.Accounts.Find(x => x.Name.Equals(name)).Id;
+                        if (access.DeleteUser(id))
+                            this.listAccounts.Rows.RemoveAt(e.RowIndex);
+                        else
+                            MessageBox.Show("Error while deleting account");
+                    }
                 }
             }
-
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message);
+            }
         }
     }
 }

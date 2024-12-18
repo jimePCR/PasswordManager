@@ -7,7 +7,6 @@ namespace PassMan
     public class DataAccess
     {
         private string connectionString;
-        private readonly string _dataSource = Environment.GetEnvironmentVariable("datasource");
         private readonly string _userId = Environment.GetEnvironmentVariable("userDB");
         private readonly string _password = Environment.GetEnvironmentVariable("passDB");
         private readonly string _initialCatalog = Environment.GetEnvironmentVariable("database");
@@ -16,7 +15,7 @@ namespace PassMan
         {
             var builder = new SqlConnectionStringBuilder
             {
-                DataSource = this._dataSource,
+                DataSource = "DP-03\\SQLEXPRESS",
                 UserID = this._userId,
                 Password = this._password,
                 InitialCatalog = this._initialCatalog
@@ -67,21 +66,38 @@ namespace PassMan
             return user1;
         }
 
-        public void updateUser()
+        public bool updateUser(Account account)
         {
             StringConnBuider();
+            using (SqlConnection _con = new SqlConnection(connectionString))
+            {
+                string queryString = string.Format("UPDATE password_account SET  name = '{0}', password = '{1}', note = '{2}' WHERE id = {3}", account.Name, account.Password, account.Note, account.Id);
+                using (SqlCommand _cmd = new SqlCommand(queryString, _con))
+                {
+                    _con.Open();
+                    return _cmd.ExecuteNonQuery() > 0;
+                }
+            }
         }
 
-        public void DeleteUser()
+        public bool DeleteUser(int id)
         {
             StringConnBuider();
+            using (SqlConnection _con = new SqlConnection(connectionString))
+            {
+                string queryString = string.Format("DELETE FROM password_account WHERE id = {0}", id);
+                using (SqlCommand _cmd = new SqlCommand(queryString, _con))
+                {
+                    _con.Open();
+                    return _cmd.ExecuteNonQuery() > 0;
+                }
+            }
         }
 
         public List<Account> GetAccounts(int id_user)
         {
-            List<Account> accounts = new List<Account>();
             StringConnBuider();
-
+            List<Account> accounts = new List<Account>();
             using (SqlConnection _con = new SqlConnection(connectionString))
             {
                 string queryString = string.Format("SELECT * FROM password_account WHERE user_id = '{0}'", id_user);
