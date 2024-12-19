@@ -8,7 +8,8 @@ namespace PassMan.Views
     {
         private readonly DataAccess access = new DataAccess();
         private readonly Account account;
-        private readonly string masterPass = "";
+        private readonly string masterPass;
+
         public EditAccount(Account account, string masterPass)
         {
             InitializeComponent();
@@ -28,7 +29,8 @@ namespace PassMan.Views
                     this.account.Name = this.userValue.Text;
                     this.account.Password = EncryptService.Encrypt(this.passValue.Text, masterPass);
                     this.account.Note = this.notes.Text;
-                    access.updateAccount(account);
+                    if (!access.updateAccount(account))
+                        MessageBox.Show("Error while updating account");
                     this.Close();
                 }
                 else

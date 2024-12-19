@@ -7,9 +7,9 @@ namespace PassMan
 {
     public partial class MainView : Form
     {
-        private DataAccess access = new DataAccess();
+        private readonly DataAccess access = new DataAccess();
         private readonly User userMV = new User();
-        private EmailService emailService = new EmailService();
+        private readonly EmailService emailService = new EmailService();
 
         public MainView(User user)
         {
